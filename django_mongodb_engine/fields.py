@@ -1,11 +1,17 @@
 from django.core.exceptions import ImproperlyConfigured
 from django.db import connections, models
 
-from pymongo.objectid import ObjectId
 from gridfs import GridFS
 from gridfs.errors import NoFile
 
 from djangotoolbox.fields import EmbeddedModelField as _EmbeddedModelField
+
+# handle pymongo backward compatibility
+try:
+    from bson.objectid import ObjectId
+except ImportError:
+    from pymongo.objectid import ObjectId, 
+    
 from django_mongodb_engine.utils import make_struct
 
 __all__ = ['LegacyEmbeddedModelField', 'GridFSField', 'GridFSString']

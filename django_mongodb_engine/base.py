@@ -10,6 +10,13 @@ from pymongo.collection import Collection
 from .creation import DatabaseCreation
 from .utils import CollectionDebugWrapper
 
+# handle pymongo backward compatibility
+try:
+    from bson.objectid import ObjectId
+    from bson.errors import InvalidId
+except ImportError:
+    from pymongo.objectid import ObjectId, InvalidId
+    
 from djangotoolbox.db.base import (
     NonrelDatabaseFeatures,
     NonrelDatabaseWrapper,

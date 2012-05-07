@@ -112,8 +112,15 @@ class MongoDBEngineTests(TestCase):
 class RegressionTests(TestCase):
     @skip("Needs changes in ListField/db_type")
     def test_issue_47(self):
-        """ ForeignKeys in subobjects should be ObjectIds, not unicode """
-        from bson.objectid import ObjectId
+        """
+        ForeignKeys in subobjects should be ObjectIds, not unicode.
+        """
+        # handle pymongo backward compatibility
+        try:
+            from bson.objectid import ObjectId
+        except ImportError:
+            from pymongo.objectid import ObjectId 
+
         from query.models import Blog, Post
         post = Post.objects.create(blog=Blog.objects.create())
         m = Issue47Model.objects.create(foo=[post])

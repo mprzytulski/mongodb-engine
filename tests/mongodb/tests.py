@@ -5,7 +5,7 @@ from django.db.utils import DatabaseError, IntegrityError
 from django.db.models import Q
 from django.contrib.sites.models import Site
 
-from pymongo.objectid import InvalidId
+from bson.objectid import InvalidId
 from pymongo import ASCENDING, DESCENDING
 from gridfs import GridFS, GridOut
 

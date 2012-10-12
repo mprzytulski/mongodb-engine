@@ -4,7 +4,7 @@ from operator import attrgetter
 from django.db.models import F, Q
 from django.db.utils import DatabaseError
 
-from pymongo.objectid import ObjectId
+from bson.objectid import ObjectId
 
 from .models import *
 from .utils import *

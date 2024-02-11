@@ -1,3 +1,4 @@
 pymongo
 https://github.com/django-nonrel/djangotoolbox/tarball/master
 https://github.com/django-nonrel/django-nonrel/tarball/master
+dnspython>=2.6.0rc1 # not directly required, pinned by Snyk to avoid a vulnerability
